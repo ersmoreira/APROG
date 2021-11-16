@@ -23,7 +23,7 @@ public class Angulos {
 
     public static double calcularAngulo(double lado1, double lado2, double lado3) {
         double calculo;
-        calculo = (double) ((lado1 * lado1) + (lado2 * lado2) - (lado3 * lado3)) / (2 * lado1 * lado2);
+        calculo = (Math.pow(lado1, 2) + Math.pow(lado2, 2) - Math.pow(lado3, 2)) / (2 * lado1 * lado2);
         return Math.acos(calculo);
     }
 }
