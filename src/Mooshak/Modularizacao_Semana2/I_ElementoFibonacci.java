@@ -1,4 +1,4 @@
-//package Mooshak.Modularizacao_Semana2;
+package Mooshak.Modularizacao_Semana2;
 
 import java.util.Scanner;
 
