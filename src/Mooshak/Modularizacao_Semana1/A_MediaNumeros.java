@@ -2,7 +2,7 @@ package Mooshak.Modularizacao_Semana1;
 
 import java.util.Scanner;
 
-public class MediaNumeros {
+public class A_MediaNumeros {
 
     public static int quantidadeNumeros = 0, somaNumeros = 0;
     public static int n;

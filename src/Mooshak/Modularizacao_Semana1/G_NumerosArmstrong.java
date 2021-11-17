@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class NumerosArmstrong {
+public class G_NumerosArmstrong {
 
     public static void main(String[] args) {
         int numeroMaximo;

@@ -2,7 +2,7 @@ package Mooshak.Modularizacao_Semana1;
 
 import java.util.Scanner;
 
-public class Angulos {
+public class C_Angulos {
 
     public static void main(String[] args) {
         double lado1, lado2, lado3;

@@ -2,7 +2,7 @@ package Mooshak.Modularizacao_Semana1;
 
 import java.util.Scanner;
 
-public class CombinacoesPermutacoes {
+public class D_CombinacoesPermutacoes {
 
     public static void main(String[] args) {
         int quantidadeTotalElementos, quantidadeAgrupar;

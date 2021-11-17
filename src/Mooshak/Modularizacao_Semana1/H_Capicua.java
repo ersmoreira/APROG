@@ -2,7 +2,7 @@ package Mooshak.Modularizacao_Semana1;
 
 import java.util.Scanner;
 
-public class Capicua {
+public class H_Capicua {
 
     public static void main(String[] args) {
         final int MAX_TENTATIVAS = 5;

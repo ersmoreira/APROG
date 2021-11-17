@@ -2,7 +2,7 @@ package Mooshak.Modularizacao_Semana1;
 
 import java.util.Scanner;
 
-public class GraficoClassificacoes {
+public class B_GraficoClassificacoes {
 
     public static void main(String[] args) {
 
