@@ -1,4 +1,4 @@
-package Mooshak.Modularizacao_Semana1;
+//package Mooshak.Modularizacao_Semana1;
 
 import java.util.Scanner;
 
@@ -16,16 +16,15 @@ public class C_Angulos {
         ang2 = calcularAngulo(lado1, lado3, lado2);
         ang3 = calcularAngulo(lado2, lado3, lado1);
 
-        if ((int) (ang1 + ang2 + ang3) == 180) {
+        if (ang1 == 0 || ang2 == 0 || ang3 == 0 || ((int) (ang1 + ang2 + ang3) != 180)) {
+            System.out.println("impossivel");
+        } else {
             System.out.printf("a=%.2f\n", lado1);
             System.out.printf("b=%.2f\n", lado2);
             System.out.printf("c=%.2f\n", lado3);
             System.out.printf("ang(a,b)=%.2f\n", ang1);
             System.out.printf("ang(a,c)=%.2f\n", ang2);
             System.out.printf("ang(b,c)=%.2f\n", ang3);
-
-        } else {
-            System.out.println("impossivel");
         }
 
     }
