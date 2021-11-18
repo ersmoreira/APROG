@@ -21,6 +21,15 @@ public class Z_PrimoTempoInteiro {
         System.out.printf("(%d)\n", quantidade);
     }
 
+    public static boolean checkNumeroPrimoTempoInteiro(int numero){
+        String num = String.valueOf(numero);
+        for (int i = num.length()-1; i >=0 ; i--) {
+
+        }
+
+        return  true;
+    }
+
     public static boolean checkNumeroPrimo(int numero) {
         for (int i = 2; i < numero; i++) {
             if (numero % i == 0) {
