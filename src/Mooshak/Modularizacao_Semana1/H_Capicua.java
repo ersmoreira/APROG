@@ -10,17 +10,13 @@ public class H_Capicua {
         int numero = 0, quantidadeTentativas = 0;
 
 
-        while (quantidadeTentativas < MAX_TENTATIVAS) {
+        do {
             numero = sc.nextInt();
             quantidadeTentativas++;
-            if (checkCapicua(numero)) {
-                System.out.println("capicua");
-                break;
-            }
-            if (quantidadeTentativas == MAX_TENTATIVAS) {
-                System.out.println("tentativas excedidas");
-                break;
-            }
+        } while (quantidadeTentativas < MAX_TENTATIVAS && !checkCapicua(numero));
+
+        if (quantidadeTentativas == MAX_TENTATIVAS) {
+            System.out.println("tentativas excedidas");
         }
 
     }
@@ -36,6 +32,11 @@ public class H_Capicua {
             aux = aux / 10;
         }
 
-        return numero == numeroInvertido;
+        if (numero == numeroInvertido) {
+            System.out.println("capicua");
+            return true;
+        }
+
+        return false;
     }
 }
