@@ -1,4 +1,4 @@
-package Mooshak.Modularizacao_Semana2;
+// package Mooshak.Modularizacao_Semana2;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class Z_PrimoTempoInteiro {
         numero2 = sc.nextInt();
 
         for (int i = minimo(numero1, numero2); i <= maximo(numero1, numero2); i++) {
-            if (checkNumeroPrimo(i)){
+            if (checkNumeroPrimoTempoInteiro(i)) {
                 quantidade++;
                 System.out.println(i);
             }
@@ -21,13 +21,31 @@ public class Z_PrimoTempoInteiro {
         System.out.printf("(%d)\n", quantidade);
     }
 
-    public static boolean checkNumeroPrimoTempoInteiro(int numero){
-        String num = String.valueOf(numero);
-        for (int i = num.length()-1; i >=0 ; i--) {
+    public static boolean checkNumeroPrimoTempoInteiro(int numero) {
+        int aux = numero;
+        int numeroDigitos = numeroDigitos(numero);
+        int base = 10;
+        int ultimo, outros;
 
+        do {
+            if (!checkNumeroPrimo(aux)) {
+                return false;
+            }
+            ultimo = aux % base;
+            outros = aux / base;
+            aux = ultimo * ((int)Math.pow(base, (numeroDigitos-1))) + outros;
+        } while (aux != numero);
+
+        return true;
+    }
+
+    public static int numeroDigitos(int numero) {
+        int numeroDigitos = 1;
+        while (numero > 9) {
+            numero /= 10;
+            numeroDigitos++;
         }
-
-        return  true;
+        return numeroDigitos;
     }
 
     public static boolean checkNumeroPrimo(int numero) {
