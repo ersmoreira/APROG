@@ -1,4 +1,4 @@
-//package Mooshak.Arrays;
+package Mooshak.Arrays;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class I_Condominio {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[][] nomeProprietarioApartamento = new String[numeroEntradas][numeroPisos];
+        String[][] nomeProprietarioApartamento;
         String nomePesquisa;
 
         nomeProprietarioApartamento = lerNomeProprietarios();
@@ -19,7 +19,7 @@ public class I_Condominio {
     }
 
     public static String[][] lerNomeProprietarios() {
-        String proprietarios[][] = new String[numeroEntradas][numeroPisos];
+        String[][] proprietarios = new String[numeroEntradas][numeroPisos];
         for (int entrada = 0; entrada < numeroEntradas; entrada++) {
             for (int piso = 0; piso < numeroPisos; piso++) {
                 proprietarios[entrada][piso] = sc.nextLine();
