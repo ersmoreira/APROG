@@ -21,9 +21,13 @@ public class D_FrequenciaNotas {
             do {
                 valor = sc.nextInt();
             } while (valor < 0 || valor > 20);
-            notas[valor]++;
+            determinaFrequenciaNota(notas, valor);
         }
         return notas;
+    }
+
+    public static void determinaFrequenciaNota(int[] notas, int valor){
+        notas[valor]++;
     }
 
     public static void imprimeEscala(int[] notas){
