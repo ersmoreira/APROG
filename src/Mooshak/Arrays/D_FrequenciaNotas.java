@@ -1,4 +1,4 @@
-package Mooshak.Arrays;
+//package Mooshak.Arrays;
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class D_FrequenciaNotas {
         for (int i = 0; i < notas.length; i++) {
             do {
                 valor = sc.nextInt();
-            } while (valor < 0 || valor > 20);
+            } while (valor < NOTA_MINIMA || valor > NOTA_MAXIMA);
             notas[i] = valor;
         }
     }

@@ -38,40 +38,37 @@ public class H_RodarSequencia {
 
     public static void trataComando(int[] valores) {
         String comando;
-        int aux;
 
         do {
             comando = sc.nextLine();
-
-            switch (comando) {
-                case "direita":
-                    valores = rodaDireita(valores);
-                    break;
-                case "esquerda":
-                    valores = rodaEsquerda(valores);
-                    break;
+            if (!comando.equalsIgnoreCase("sair")) {
+                switch (comando) {
+                    case "direita":
+                        rodaDireita(valores);
+                        break;
+                    case "esquerda":
+                        rodaEsquerda(valores);
+                        break;
+                }
+                mostraValores(valores);
             }
         } while (!comando.equalsIgnoreCase("sair"));
     }
 
-    public static int[] rodaDireita(int[] valores) {
+    public static void rodaDireita(int[] valores) {
         int aux = valores[valores.length - 1];
         for (int i = (valores.length - 1); i > 0; i--) {
             valores[i] = valores[i - 1];
         }
         valores[0] = aux;
-        mostraValores(valores);
-        return valores;
     }
 
-    public static int[] rodaEsquerda(int[] valores) {
+    public static void rodaEsquerda(int[] valores) {
         int aux = valores[0];
         for (int i = 0; i < (valores.length - 1); i++) {
             valores[i] = valores[i + 1];
         }
         valores[valores.length - 1] = aux;
-        mostraValores(valores);
-        return valores;
     }
 
 }
