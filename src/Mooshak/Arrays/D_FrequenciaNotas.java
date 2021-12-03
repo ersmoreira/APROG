@@ -4,34 +4,44 @@ import java.util.Scanner;
 
 public class D_FrequenciaNotas {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    static final Scanner sc = new Scanner(System.in);
+    static final int NOTA_MINIMA = 0;
+    static final int NOTA_MAXIMA = 20;
+    static final int NUMERO_NOTAS = 21;
 
+
+    public static void main(String[] args) {
         int quantidadeAlunos = sc.nextInt();
-        int[] notas = lerNotas(sc, quantidadeAlunos);
-        imprimeEscala(notas);
+        int[] notas = new int[quantidadeAlunos];
+        lerNotas(notas);
+        int[] frequenciaNotas = determinaFrequenciasNotas(notas);
+        imprimeEscala(frequenciaNotas);
 
     }
 
-    public static int[] lerNotas(Scanner sc, int quantidadeAlunos) {
-        int[] notas = new int[21];
-        int valor = 0;
-
-        for (int i = 1; i <= quantidadeAlunos; i++) {
+    public static void lerNotas(int[] notas) {
+        int valor;
+        for (int i = 0; i < notas.length; i++) {
             do {
                 valor = sc.nextInt();
             } while (valor < 0 || valor > 20);
-            determinaFrequenciaNota(notas, valor);
+            notas[i] = valor;
         }
-        return notas;
     }
 
-    public static void determinaFrequenciaNota(int[] notas, int valor){
-        notas[valor]++;
+    public static int[] determinaFrequenciasNotas(int[] notas) {
+        int[] frequenciaNotas = new int[NUMERO_NOTAS];
+        int nota;
+
+        for (int i = 0; i < notas.length; i++) {
+            nota= notas[i];
+            frequenciaNotas[nota]++;
+        }
+        return frequenciaNotas;
     }
 
-    public static void imprimeEscala(int[] notas){
-        for (int i = 0; i <= 20 ; i++) {
+    public static void imprimeEscala(int[] notas) {
+        for (int i = 0; i <= 20; i++) {
             System.out.printf("%d %d\n", i, notas[i]);
         }
     }
