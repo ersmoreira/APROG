@@ -1,4 +1,4 @@
-//package Mooshak.Arrays;
+package Mooshak.Arrays;
 
 import java.util.Scanner;
 
