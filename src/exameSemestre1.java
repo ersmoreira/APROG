@@ -2,6 +2,7 @@ public class exameSemestre1 {
 
     final static int COLUNA_PRECO = 1;
     final static int COLUNA_DURACAO = 0;
+    final static int COLUNA_NOME = 0;
 
     public static void main(String[] args) {
         String[] musics = {"On my way", "Memories", "Perfect", "Havana"};
@@ -39,6 +40,11 @@ public class exameSemestre1 {
         }
 
         return diferencaMaxima;
+    }
+
+    // Exercicio 4
+    public static void writeToFile(String nomeFicheiro, String[] musica, double[][] informacao){
+
     }
 
 
