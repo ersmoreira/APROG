@@ -13,13 +13,10 @@ public class G_NumerosArmstrong {
     }
 
     public static void showNumerosArmstrong(int valorMaximo) {
-        int expoente = numeroDigitos(valorMaximo);
-
         for (int i = 0; i <= valorMaximo; i++) {
             if (checkNumeroArmstrong(i) == true) {
                 System.out.println(i);
-            }
-        }
+            }        }
 
     }
 
