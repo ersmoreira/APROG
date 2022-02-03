@@ -6,13 +6,15 @@ public class exameSemestre1 {
 
     final static int COLUNA_PRECO = 1;
     final static int COLUNA_DURACAO = 0;
-    final static int COLUNA_NOME = 0;
 
     // Exercicio 5
     public static void main(String[] args) throws FileNotFoundException {
         String[] musics = {"On my way", "Memories", "Perfect", "Havana"};
         double[][] info = {{201.6, 3.25}, {189, 2.80}, {256.8, 3.75}, {202.8, 2.35}};
         String nomeFicheiroSaida = "musics.txt";
+
+        // Ordenar
+        sort(musics, info);
 
         // Mostrar qual a musica com o preço mais elevado
         String musicaPrecoMaisElevado = findMostExpensiveMusic(musics, info);
@@ -42,6 +44,31 @@ public class exameSemestre1 {
         }
 
         return musica[indiceMaximo];
+    }
+
+    // Exercicio 2
+    public static void sort(String[] musica, double[][] informacao) {
+        String auxiliar;
+        double[] auxiliarInfo;
+        int totalInformacoes = informacao.length;
+
+
+        for (int i = 0; i < totalInformacoes - 1; i++) {
+            for (int j = i; j < totalInformacoes; j++) {
+                if (informacao[i][0] > informacao[j][0]) {
+                    auxiliar = musica[i];
+                    auxiliarInfo = informacao[i];
+                    musica[i] = musica[j];
+                    informacao[i] = informacao[j];
+                    musica[j] = auxiliar;
+                    informacao[j] = auxiliarInfo;
+                } else if (informacao[i][0] == informacao[j][0] && musica[j].compareTo(musica[i]) < 0) {
+                    auxiliar = musica[j];
+                    musica[j] = musica[i];
+                    musica[i] = auxiliar;
+                }
+            }
+        }
     }
 
     // Exercicio 3
