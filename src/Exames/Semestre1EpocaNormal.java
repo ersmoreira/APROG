@@ -1,8 +1,10 @@
+package Exames;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-public class exameSemestre1 {
+public class Semestre1EpocaNormal {
 
     final static int COLUNA_PRECO = 1;
     final static int COLUNA_DURACAO = 0;
