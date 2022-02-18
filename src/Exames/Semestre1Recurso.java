@@ -6,20 +6,28 @@ import java.util.Scanner;
 
 public class Semestre1Recurso {
 
-    static final int NUMERO_MAXIMO_MESES = 12;
-    static final int NUMERO_COLUNAS_SCORE = 4;
+    static final int MAX_MESES = 6;
+    static final int COLUNAS = 4;
+
+    static final String CAMINHO_FICHEIRO_DADOS = "src\\Exames\\xadrez1a6.txt";
     static final String DELIMITADOR = ",";
-    static final int SCORE_COLUNA_REALIZADOS = 0, SCORE_COLUNA_GANHOS = 1, SCORE_COLUNA_PERDIDOS = 2, SCORE_COLUNA_EMPATADOS = 3;
+    static final int JOGOS_COLUNA_REALIZADOS = 0, JOGOS_COLUNA_GANHOS = 1, JOGOS_COLUNA_PERDIDOS = 2,
+            JOGOS_COLUNA_EMPATADOS = 3;
 
-    public static void main(String[] args) {
-        String[] meses = new String[NUMERO_MAXIMO_MESES];
-        int[][] score = new int[NUMERO_MAXIMO_MESES][NUMERO_COLUNAS_SCORE];
+    public static void main(String[] args) throws FileNotFoundException {
+        String[] meses = new String[MAX_MESES];
+        int[][] jogos = new int[MAX_MESES][COLUNAS];
 
-
+        int numeroMeses = readInformation(CAMINHO_FICHEIRO_DADOS, meses, jogos);
+        System.out.printf("O mês com maior percentagem de jogos ganhos foi: %s%n", getTheMostVictoriousMonth(meses,
+                jogos, numeroMeses));
+        float[] media = getAverages(jogos, numeroMeses);
+        writeStatistics(meses, jogos, media[0], numeroMeses);
     }
 
-    public static int readInformation(String caminhoFicheiro, String[] meses, int[][] score) throws FileNotFoundException {
-        final int AUX_COLUNA_MES = 0, AUX_COLUNA_REALIZADOS = 1, AUX_COLUNA_GANHOS = 2, AUX_COLUNA_PERDIDOS = 3, AUX_COLUNA_EMPATADOS = 4;
+    public static int readInformation(String caminhoFicheiro, String[] meses, int[][] jogos) throws FileNotFoundException {
+        final int AUX_COLUNA_MES = 0, AUX_COLUNA_REALIZADOS = 1, AUX_COLUNA_GANHOS = 2, AUX_COLUNA_PERDIDOS = 3,
+                AUX_COLUNA_EMPATADOS = 4;
         int numeroMes = 0;
         File dados = new File(caminhoFicheiro);
         Scanner ler = new Scanner(dados);
@@ -27,37 +35,38 @@ public class Semestre1Recurso {
         while (ler.hasNextLine()) {
             String[] aux = ler.nextLine().split(DELIMITADOR);
             meses[numeroMes] = aux[AUX_COLUNA_MES];
-            score[numeroMes][SCORE_COLUNA_REALIZADOS] = Integer.parseInt(aux[AUX_COLUNA_REALIZADOS]);
-            score[numeroMes][SCORE_COLUNA_GANHOS] = Integer.parseInt(aux[AUX_COLUNA_GANHOS]);
-            score[numeroMes][SCORE_COLUNA_PERDIDOS] = Integer.parseInt(aux[AUX_COLUNA_PERDIDOS]);
-            score[numeroMes][SCORE_COLUNA_EMPATADOS] = Integer.parseInt(aux[AUX_COLUNA_EMPATADOS]);
+            jogos[numeroMes][JOGOS_COLUNA_REALIZADOS] = Integer.parseInt(aux[AUX_COLUNA_REALIZADOS]);
+            jogos[numeroMes][JOGOS_COLUNA_GANHOS] = Integer.parseInt(aux[AUX_COLUNA_GANHOS]);
+            jogos[numeroMes][JOGOS_COLUNA_PERDIDOS] = Integer.parseInt(aux[AUX_COLUNA_PERDIDOS]);
+            jogos[numeroMes][JOGOS_COLUNA_EMPATADOS] = Integer.parseInt(aux[AUX_COLUNA_EMPATADOS]);
             numeroMes++;
         }
         return numeroMes;
     }
 
-    public static String getTheMostVictoriousMonth(String[] meses, int[][] scores, int numeroMeses) {
+    public static String getTheMostVictoriousMonth(String[] meses, int[][] jogos, int numeroMeses) {
         String mes = "";
-        int vitoriasMaximas = 0;
+        float percentagem, percentagemMaior = 0;
 
         for (int linha = 0; linha < numeroMeses; linha++) {
-            if (scores[linha][SCORE_COLUNA_GANHOS] > vitoriasMaximas){
+            percentagem = (float) jogos[linha][JOGOS_COLUNA_GANHOS] / jogos[linha][JOGOS_COLUNA_REALIZADOS];
+            if (percentagem > percentagemMaior) {
                 mes = meses[linha];
-                vitoriasMaximas = scores[linha][SCORE_COLUNA_GANHOS];
+                percentagemMaior = percentagem;
             }
         }
 
         return mes;
     }
 
-    public static float[] getAverages (int[][] scores, int numeroMeses){
-        float[] averages = new float[NUMERO_COLUNAS_SCORE];
-        int somaColuna = 0;
+    public static float[] getAverages(int[][] jogos, int numeroMeses) {
+        float[] averages = new float[COLUNAS];
+        int somaColuna;
 
-        for (int coluna = 0; coluna < NUMERO_COLUNAS_SCORE; coluna++) {
+        for (int coluna = 0; coluna < COLUNAS; coluna++) {
             somaColuna = 0;
-            for (int linha = 0; linha < numeroMeses; coluna++) {
-                somaColuna += scores[coluna][linha];
+            for (int linha = 0; linha < numeroMeses; linha++) {
+                somaColuna += jogos[linha][coluna];
             }
             averages[coluna] = (float) somaColuna / numeroMeses;
         }
@@ -65,13 +74,15 @@ public class Semestre1Recurso {
         return averages;
     }
 
-    public static void writeStatistics(String[] meses, int[][] scores, float mediaJogosRealizados, int numeroMeses){
+    public static void writeStatistics(String[] meses, int[][] jogos, float mediaJogosRealizados, int numeroMeses) {
+
+        System.out.printf("Meses com mais de %.1f jogos%n", mediaJogosRealizados);
 
         for (int linha = 0; linha < numeroMeses; linha++) {
-            for (int coluna = 0; coluna < ; coluna++) {
-                
+            if (jogos[linha][JOGOS_COLUNA_REALIZADOS] > mediaJogosRealizados) {
+                System.out.printf("%s : %d%n", meses[linha], jogos[linha][JOGOS_COLUNA_REALIZADOS]);
             }
         }
-        
+
     }
 }
